@@ -21,7 +21,7 @@
           transition: all 0.5s ease;
         }
       
-        /* Header Styles */
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -68,7 +68,7 @@
             border: 2px solid #007bff;
         }
       
-        /* Navbar Styles */
+
         .navbar-links-container {
           display: flex;
           justify-content: center;
@@ -88,7 +88,7 @@
           color: #ffd700;
         }
       
-        /* About Us Section */
+
         .about-us {
           padding: 2rem;
          
@@ -97,12 +97,7 @@
           background-size: cover;
         }
       
-        /* .about-us-heading {
-              font-size: 2rem;
-              font-weight: bold;
-              color: #593F62;
-              margin-bottom: 1rem;
-          } */
+       
       
         .about-us-text {
           font-size: 1rem;
@@ -110,7 +105,7 @@
           margin-bottom: 1rem;
         }
       
-        /* Mindly Quiz Section */
+
         .mindly-quiz {
           padding: 2rem;
           text-align: left;
@@ -143,7 +138,7 @@
           margin-bottom: 0.5rem;
         }
       
-        /* Follow Us Section */
+
         .follow-us {
           padding: 2rem;
           text-align: center;
@@ -174,7 +169,7 @@
           transform: scale(1.2);
         }
       
-        /* Footer Styles */
+
         .footer {
           display: flex;
           justify-content: space-between;
@@ -352,15 +347,15 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Select the "About Us" link and target section
+
   const aboutLink = document.querySelector("#about");
   const aboutSection = document.querySelector(".about-us");
 
-  // Select the "Contact Us" link and target section
+
   const contactLink = document.querySelector("#contact-us");
   const followUsSection = document.querySelector("#follow-us");
 
-  // Smooth scrolling for "About Us" link
+
   if (aboutLink && aboutSection) {
     aboutLink.addEventListener("click", function (event) {
       event.preventDefault();
@@ -368,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Smooth scrolling for "Contact Us" link
+
   if (contactLink && followUsSection) {
     contactLink.addEventListener("click", function (event) {
       event.preventDefault();
