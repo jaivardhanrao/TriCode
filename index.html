@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindMate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+      
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+          color: #333333;
+          transition: all 0.5s ease;
+        }
+      
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2vh 3vw;
+            background-color: #d6c9c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-img {
+            height: 8vh;
+            width: 8vh;
+            margin-right: 1vw;
+        }
+        
+        .header-title-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #593f62;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .username {
+            margin-right: 1vw;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .avatar {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+        }
+      
+        /* Navbar Styles */
+        .navbar-links-container {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          background: #5c5e60;
+          padding: 1rem;
+        }
+      
+        .navbar-link {
+          text-decoration: none;
+          font-size: 1.2rem;
+          color: #ffffff;
+          transition: color 0.3s ease;
+        }
+      
+        .navbar-link:hover {
+          color: #ffd700;
+        }
+      
+        /* About Us Section */
+        .about-us {
+          padding: 2rem;
+         
+          text-align: left;
+          background-image: url('/mnt/data/A_light_and_soothing_background_image_designed_for.png');
+          background-size: cover;
+        }
+      
+        /* .about-us-heading {
+              font-size: 2rem;
+              font-weight: bold;
+              color: #593F62;
+              margin-bottom: 1rem;
+          } */
+      
+        .about-us-text {
+          font-size: 1rem;
+          color: #555555;
+          margin-bottom: 1rem;
+        }
+      
+        /* Mindly Quiz Section */
+        .mindly-quiz {
+          padding: 2rem;
+          text-align: left;
+          background: #c0cbc4;
+        }
+      
+        .mindly-quiz-heading-text {
+          font-size: 2rem;
+          font-weight: bold;
+          color: #593f62;
+          margin-bottom: 1rem;
+          text-align: center;
+        }
+      
+        .mindly-quiz-subheading {
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: #593f62;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+      
+        ul {
+          list-style: disc;
+          padding-left: 2rem;
+          margin-bottom: 1rem;
+        }
+      
+        li {
+          margin-bottom: 0.5rem;
+        }
+      
+        /* Follow Us Section */
+        .follow-us {
+          padding: 2rem;
+          text-align: center;
+          background: linear-gradient(to bottom, #e7e7e7, #dcdcdc);
+        }
+      
+        .follow-us-heading-text {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #593f62;
+          margin-bottom: 1rem;
+        }
+      
+        .follow-us-container {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+      
+        .follow-us-logo {
+          width: 40px;
+          height: 40px;
+          transition: transform 0.3s ease;
+        }
+      
+        .follow-us-logo:hover {
+          transform: scale(1.2);
+        }
+      
+        /* Footer Styles */
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: linear-gradient(to right, #593f62, #4e3d57);
+          color: #ffffff;
+          padding: 1rem 2rem;
+        }
+      
+        .footer-left-text,
+        .footer-right-text {
+          font-size: 1rem;
+        }
+      
+        .footer-right-text {
+          margin-left: 1rem;
+          cursor: pointer;
+          transition: color 0.3s ease;
+        }
+      
+        .footer-right-text:hover {
+          color: #ffd700;
+        }
+      
+        .mindly-quiz-subheading-text {
+          text-align: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #593f62;
+          text-decoration: underline;
+        }
+
+        .mindly-quiz-subheading-text:hover {
+          color: #410254;
+        }
+
+        .follow-img{
+          width: 15rem;
+          height: 15rem;
+        }
+       
+      </style>
+  </head>
+  <body>
+   
+    <!-- Header -->
+    <section class="header">
+        <div class="header-left">
+            <img class="logo-img"
+                src="https://static.vecteezy.com/system/resources/previews/011/883/287/non_2x/modern-letter-c-colorful-logo-with-watter-drop-good-for-technology-logo-company-logo-dummy-logo-bussiness-logo-free-vector.jpg"
+                alt="MindMate Logo" />
+            <p class="header-title-text">MindMate</p>
+        </div>
+        <div class="header-right">
+            <div class="username">Anonymous</div>
+            <img class="avatar"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81iX4Mo49Z3oCPSx-GtgiMAkdDop2uVmVvw&s"
+                alt="Avatar" />
+        </div>
+    </section>
+
+    <section class="navbar">
+        <div class="navbar-links-container">
+          <a href="#" id="home" class="navbar-link">Home</a>
+          <a href="#" id="about" class="navbar-link">About</a>
+          <a href="#" id="contact-us" class="navbar-link">Contact Us</a>
+          <a href="quiz.html" id="take-your-quiz" class="navbar-link">Take your Quiz</a>
+        </div>
+      </section>
+  
+      <section class="about-us" id="about">
+        <p class="about-us-text">
+          Welcome to MindMate, your companion in mental wellness. At MindMate, we
+          believe that understanding your mental health is the first step toward a
+          happier and healthier life.
+        </p>
+        <p class="about-us-text">
+          Our platform offers a quick and insightful way to assess your mental
+          well-being. Through a thoughtfully designed 15-question survey, we help
+          you reflect on key aspects of your mental health. Based on your
+          responses, MindMate provides:
+        </p>
+        <ul>
+          <li>
+            <b>Personalized Feedback:</b> Gain meaningful insights into your
+            emotional and mental state.
+          </li>
+        </ul>
+        <p class="about-us-text">
+          MindMate is designed to empower you with knowledge, offering gentle
+          guidance and resources to help you take control of your mental health
+          journey. Whether you're exploring ways to de-stress, seeking clarity, or
+          just checking in with yourself, MindMate is here to support you every
+          step of the way.
+          <br /><br />
+          Your mental health matters—let's work together toward a brighter,
+          balanced you!
+        </p>
+      </section>
+  
+      <section class="mindly-quiz">
+        <p class="mindly-quiz-heading-text">MindLy Quiz</p>
+        <p class="mindly-quiz-subheading">How It Works</p>
+        <ul>
+          <li>
+            <b>Answer Thoughtfully:</b> The quiz features carefully curated
+            questions covering areas such as stress levels, mood, sleep patterns,
+            and coping mechanisms.
+          </li>
+          <li>
+            <b>Personalized Feedback:</b> Along with your score, we provide
+            actionable feedback and tips to help you strengthen your mental
+            well-being.
+          </li>
+        </ul>
+  
+        <p class="mindly-quiz-subheading">How It Helps</p>
+        <ul>
+          <li>
+            <b>Increases Self-Awareness:</b> The quiz encourages you to reflect on
+            aspects of your mental health you might not think about daily.
+          </li>
+          <li>
+            <b> Early Identification:</b> Spot potential areas of concern before they escalate.
+          </li>
+          <li>
+            <b>Actionable Insights:</b> Receive simple, practical advice to make
+            positive changes in your routine and mindset.
+          </li>
+          <li>
+            <b>Empowerment:</b> By knowing where you stand, you can take informed
+            steps to enhance your mental health.
+          </li>
+        </ul>
+  
+        <a href="quiz.html"><p class="mindly-quiz-subheading-text">Take your quiz now!</p></a>
+      </section>
+  
+      <section class="follow-us" id="follow-us">
+        <p class="follow-us-heading-text">Follow Us On</p>
+        <div class="follow-us-container">
+          <a href="#"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png"
+              class="follow-us-logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/640px-Facebook_logo_%28square%29.png"
+              class="follow-us-logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/1690643591twitter-x-logo-png.webp/1024px-1690643591twitter-x-logo-png.webp.png"
+              class="follow-us-logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+              class="follow-us-logo"
+          /></a>
+        </div>
+        <div class="follow-us-img">
+          <img src="https://img.freepik.com/premium-vector/follow-us-sign-flat-color-sign-from-phone-screen-phone-hand-follow-us-bubble-from-phone-vector-icon_399089-7799.jpg" class="follow-img">
+        </div>
+      </section>
+  
+      <section class="footer">
+        <p class="footer-left-text">Copyright ©️ 2024 MindMate</p>
+        <p class="footer-right-text">Privacy Policy</p>
+        <p class="footer-right-text">Terms & Conditions</p>
+      </section>
+  
+     
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Select the "About Us" link and target section
+  const aboutLink = document.querySelector("#about");
+  const aboutSection = document.querySelector(".about-us");
+
+  // Select the "Contact Us" link and target section
+  const contactLink = document.querySelector("#contact-us");
+  const followUsSection = document.querySelector("#follow-us");
+
+  // Smooth scrolling for "About Us" link
+  if (aboutLink && aboutSection) {
+    aboutLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Smooth scrolling for "Contact Us" link
+  if (contactLink && followUsSection) {
+    contactLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      followUsSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+});
+
+
+</script>
+
+    </body>
+</html>
