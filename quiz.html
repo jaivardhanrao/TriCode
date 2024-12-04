@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindMate Quiz</title>
+    <link
+      rel="icon"
+      href="https://static.vecteezy.com/system/resources/previews/011/883/287/non_2x/modern-letter-c-colorful-logo-with-watter-drop-good-for-technology-logo-company-logo-dummy-logo-bussiness-logo-free-vector.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2vh 3vw;
+        background-color: #d6c9c9;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-img {
+        height: 8vh;
+        width: 8vh;
+        margin-right: 1vw;
+      }
+
+      .header-title-text {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #593f62;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .username {
+        margin-right: 1vw;
+        font-size: 1.2rem;
+        color: #555;
+      }
+
+      .avatar {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+      }
+
+      .hero {
+        margin-top: 5vh;
+        text-align: center;
+        padding: 0 3vw;
+        background: linear-gradient(120deg, #e4eaeb, #dde4e6);
+      }
+
+      .hero-title-text {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #593f62;
+        margin-bottom: 2vh;
+      }
+
+      .hero-privacy-text {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 5vh;
+      }
+
+      .hero-privacy-text b {
+        color: #007bff;
+      }
+
+      .form-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-section div {
+        margin-bottom: 2vh;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .hero-start-quiz-btn {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      .hero-start-quiz-btn:hover {
+        background: #0056b3;
+      }
+
+      .quiz-container {
+        display: none;
+
+        background: white;
+        padding: 2vw;
+        border-radius: 1vw;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+
+        width: 80vw;
+        margin: 0 auto;
+      }
+
+      #question {
+        font-size: 1.3rem;
+        margin-bottom: 1.5vh;
+      }
+
+      #answers {
+        list-style: none;
+        padding: 0;
+      }
+
+      #answers li {
+        margin: 1vh 0;
+        padding: 1.5vh 2vw;
+        background-color: #f0f0f0;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #answers li:hover {
+        background-color: #e0e0e0;
+      }
+
+      #answers li.selected {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .navigation-buttons {
+        margin-top: 2vh;
+      }
+
+      button {
+        padding: 2vh 2.5vw;
+        margin: 0.5vh;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      button:hover:not(:disabled) {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="header">
+      <div class="header-left">
+        <img
+          class="logo-img"
+          src="https://static.vecteezy.com/system/resources/previews/011/883/287/non_2x/modern-letter-c-colorful-logo-with-watter-drop-good-for-technology-logo-company-logo-dummy-logo-bussiness-logo-free-vector.jpg"
+          alt="MindMate Logo"
+        />
+        <p class="header-title-text">MindMate</p>
+      </div>
+      <div class="header-right">
+        <div class="username">Anonymous</div>
+        <img
+          class="avatar"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81iX4Mo49Z3oCPSx-GtgiMAkdDop2uVmVvw&s"
+          alt="Avatar"
+        />
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-title-text">MindLY Quiz</div>
+      <div class="hero-privacy-text">
+        <p>
+          At MindMate, we are committed to helping you and protecting your
+          privacy. We understand that sharing personal information can be
+          sensitive, and we take your trust seriously. We value your privacy and
+          are committed to handling your information with the utmost care. We
+          want you to feel confident that your information is safe with us.
+        </p>
+        <br /><br />
+        <p>
+          We do not collect any personally identifiable information, such as
+          your name, email address, or any other login credentials. This means
+          that your privacy is protected, and your responses remain
+          <b>completely anonymous</b>.
+        </p>
+      </div>
+
+      <div class="form-section">
+        <div class="hero-gender-input">
+          <label><b>Gender:</b></label>
+          <input type="radio" name="gender" id="male" />
+          <label for="male">Male</label>
+          <input type="radio" name="gender" id="female" />
+          <label for="female">Female</label>
+          <input type="radio" name="gender" id="others" />
+          <label for="others">Others</label>
+        </div>
+
+        <div class="hero-age-input">
+          <label for="age"><b>Age:</b></label>
+          <input type="number" id="age" placeholder="Enter your age" />
+        </div>
+
+        <div class="hero-country-dropdown">
+          <select>
+            <option value="" disabled selected>
+              -- Select Your Country --
+            </option>
+            <option>--Select your Country--</option>
+            <option>Afghanistan</option>
+            <option>Albania</option>
+            <option>Algeria</option>
+            <option>Andorra</option>
+            <option>Angola</option>
+            <option>Antigua and Barbuda</option>
+            <option>Argentina</option>
+            <option>Armenia</option>
+            <option>Australia</option>
+            <option>Austria</option>
+            <option>Azerbaijan</option>
+            <option>Bahamas</option>
+            <option>Bahrain</option>
+            <option>Bangladesh</option>
+            <option>Barbados</option>
+            <option>Belarus</option>
+            <option>Belgium</option>
+            <option>Belize</option>
+            <option>Benin</option>
+            <option>Bhutan</option>
+            <option>Bolivia</option>
+            <option>Botswana</option>
+            <option>Brazil</option>
+            <option>Brunei</option>
+            <option>Bulgaria</option>
+            <option>Burkina Faso</option>
+            <option>Burundi</option>
+            <option>Cabo Verde</option>
+            <option>Cambodia</option>
+            <option>Cameroon</option>
+            <option>Canada</option>
+            <option>Central African Republic</option>
+            <option>Chad</option>
+            <option>Chile</option>
+            <option>China</option>
+            <option>Colombia</option>
+            <option>Comoros</option>
+            <option>Congo, Democratic Republic of the</option>
+            <option>Congo, Republic of the</option>
+            <option>Costa Rica</option>
+            <option>Côte d'Ivoire</option>
+            <option>Croatia</option>
+            <option>Cuba</option>
+            <option>Cyprus</option>
+            <option>Czechia</option>
+            <option>Denmark</option>
+            <option>Djibouti</option>
+            <option>Dominica</option>
+            <option>Dominican Republic</option>
+            <option>East Timor</option>
+            <option>Ecuador</option>
+            <option>Egypt</option>
+            <option>El Salvador</option>
+            <option>Equatorial Guinea</option>
+            <option>Eritrea</option>
+            <option>Estonia</option>
+            <option>Eswatini</option>
+            <option>Ethiopia</option>
+            <option>Fiji</option>
+            <option>Finland</option>
+            <option>France</option>
+            <option>Gabon</option>
+            <option>Gambia</option>
+            <option>Georgia</option>
+            <option>Germany</option>
+            <option>Ghana</option>
+            <option>Greece</option>
+            <option>Grenada</option>
+            <option>Guatemala</option>
+            <option>Guinea</option>
+            <option>Guinea-Bissau</option>
+            <option>Guyana</option>
+            <option>Haiti</option>
+            <option>Honduras</option>
+            <option>Hungary</option>
+            <option>Iceland</option>
+            <option>India</option>
+            <option>Indonesia</option>
+            <option>Iran</option>
+            <option>Iraq</option>
+            <option>Ireland</option>
+            <option>Israel</option>
+            <option>Italy</option>
+            <option>Jamaica</option>
+            <option>Japan</option>
+            <option>Jordan</option>
+            <option>Kazakhstan</option>
+            <option>Kenya</option>
+            <option>Kiribati</option>
+            <option>Kuwait</option>
+            <option>Kyrgyzstan</option>
+            <option>Laos</option>
+            <option>Latvia</option>
+            <option>Lebanon</option>
+            <option>Lesotho</option>
+            <option>Liberia</option>
+            <option>Libya</option>
+            <option>Liechtenstein</option>
+            <option>Lithuania</option>
+            <option>Luxembourg</option>
+            <option>Madagascar</option>
+            <option>Malawi</option>
+            <option>Malaysia</option>
+            <option>Maldives</option>
+            <option>Mali</option>
+            <option>Malta</option>
+            <option>Marshall Islands</option>
+            <option>Mauritania</option>
+            <option>Mauritius</option>
+            <option>Mexico</option>
+            <option>Micronesia</option>
+            <option>Moldova</option>
+            <option>Monaco</option>
+            <option>Mongolia</option>
+            <option>Montenegro</option>
+            <option>Morocco</option>
+            <option>Mozambique</option>
+            <option>Myanmar</option>
+            <option>Namibia</option>
+            <option>Nauru</option>
+            <option>Nepal</option>
+            <option>Netherlands</option>
+            <option>New Zealand</option>
+            <option>Nicaragua</option>
+            <option>Niger</option>
+            <option>Nigeria</option>
+            <option>North Korea</option>
+            <option>North Macedonia</option>
+            <option>Norway</option>
+            <option>Oman</option>
+            <option>Pakistan</option>
+            <option>Palau</option>
+            <option>Panama</option>
+            <option>Papua New Guinea</option>
+            <option>Paraguay</option>
+            <option>Peru</option>
+            <option>Philippines</option>
+            <option>Poland</option>
+            <option>Portugal</option>
+            <option>Qatar</option>
+            <option>Romania</option>
+            <option>Russia</option>
+            <option>Rwanda</option>
+            <option>Saint Kitts and Nevis</option>
+            <option>Saint Lucia</option>
+            <option>Saint Vincent and the Grenadines</option>
+            <option>Samoa</option>
+            <option>San Marino</option>
+            <option>Sao Tome and Principe</option>
+            <option>Saudi Arabia</option>
+            <option>Senegal</option>
+            <option>Serbia</option>
+            <option>Seychelles</option>
+            <option>Sierra Leone</option>
+            <option>Singapore</option>
+            <option>Slovakia</option>
+            <option>Slovenia</option>
+            <option>Solomon Islands</option>
+            <option>Somalia</option>
+            <option>South Africa</option>
+            <option>South Korea</option>
+            <option>South Sudan</option>
+            <option>Spain</option>
+            <option>Sri Lanka</option>
+            <option>Sudan</option>
+            <option>Suriname</option>
+            <option>Sweden</option>
+            <option>Switzerland</option>
+            <option>Syria</option>
+            <option>Taiwan</option>
+            <option>Tajikistan</option>
+            <option>Tanzania</option>
+            <option>Thailand</option>
+            <option>Togo</option>
+            <option>Tonga</option>
+            <option>Trinidad and Tobago</option>
+            <option>Tunisia</option>
+            <option>Turkey</option>
+            <option>Turkmenistan</option>
+            <option>Tuvalu</option>
+            <option>Uganda</option>
+            <option>Ukraine</option>
+            <option>United Arab Emirates</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>Uruguay</option>
+            <option>Uzbekistan</option>
+            <option>Vanuatu</option>
+            <option>Vatican City</option>
+            <option>Venezuela</option>
+            <option>Vietnam</option>
+            <option>Yemen</option>
+            <option>Zambia</option>
+            <option>Zimbabwe</option>
+          </select>
+        </div>
+
+        <a href="#" class="hero-start-quiz-btn" id="start-quiz-btn"
+          >Start Quiz</a
+        >
+      </div>
+    </section>
+
+    <div class="quiz-container" id="quiz-container">
+      <h1>MindLY Quiz</h1>
+      <div id="question-container">
+        <p id="question"></p>
+        <ul id="answers"></ul>
+      </div>
+      <div class="navigation-buttons">
+        <button id="next" onclick="navigate()">Next</button>
+      </div>
+    </div>
+
+    <script>
+      const questions = [
+        {
+          question:
+            "In the past two weeks, how often have you felt down, depressed, or hopeless?",
+          answers: [
+            "I have never felt down, depressed, or hopeless in the past two weeks.",
+            "I have rarely felt down, depressed, or hopeless in the past two weeks.",
+            "I have sometimes felt down, depressed, or hopeless in the past two weeks.",
+            "I have often felt down, depressed, or hopeless in the past two weeks.",
+            "I have always felt down, depressed, or hopeless in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you had little interest or pleasure in doing things you usually enjoy?",
+          answers: [
+            "I have never had little interest or pleasure in doing things I usually enjoy in the past two weeks.",
+            "I have rarely had little interest or pleasure in doing things I usually enjoy in the past two weeks.",
+            "I have sometimes had little interest or pleasure in doing things I usually enjoy in the past two weeks.",
+            "I have often had little interest or pleasure in doing things I usually enjoy in the past two weeks.",
+            "I have always had little interest or pleasure in doing things I usually enjoy in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you felt nervous, anxious, or on edge?",
+          answers: [
+            "I have never felt nervous, anxious, or on edge in the past two weeks.",
+            "I have rarely felt nervous, anxious, or on edge in the past two weeks.",
+            "I have sometimes felt nervous, anxious, or on edge in the past two weeks.",
+            "I have often felt nervous, anxious, or on edge in the past two weeks.",
+            "I have always felt nervous, anxious, or on edge in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you found it difficult to stop worrying once you start?",
+          answers: [
+            "I have never found it difficult to stop worrying once I start in the past two weeks.",
+            "I have rarely found it difficult to stop worrying once I start in the past two weeks.",
+            "I have sometimes found it difficult to stop worrying once I start in the past two weeks.",
+            "I have often found it difficult to stop worrying once I start in the past two weeks.",
+            "I have always found it difficult to stop worrying once I start in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "Over the past two weeks, how would you rate your sleep quality?",
+          answers: [
+            "I would rate my sleep quality as excellent over the past two weeks.",
+            "I would rate my sleep quality as good over the past two weeks.",
+            "I would rate my sleep quality as fair over the past two weeks.",
+            "I would rate my sleep quality as poor over the past two weeks.",
+            "I would rate my sleep quality as very poor over the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you felt tired or had little energy, even after rest?",
+          answers: [
+            "I have never felt tired or had little energy, even after rest in the past two weeks.",
+            "I have rarely felt tired or had little energy, even after rest in the past two weeks.",
+            "I have sometimes felt tired or had little energy, even after rest in the past two weeks.",
+            "I have often felt tired or had little energy, even after rest in the past two weeks.",
+            "I have always felt tired or had little energy, even after rest in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you had thoughts that you are a failure or have let yourself or your family down?",
+          answers: [
+            "I have never had thoughts that I am a failure or have let myself or my family down in the past two weeks.",
+            "I have rarely had thoughts that I am a failure or have let myself or my family down in the past two weeks.",
+            "I have sometimes had thoughts that I am a failure or have let myself or my family down in the past two weeks.",
+            "I have often had thoughts that I am a failure or have let myself or my family down in the past two weeks.",
+            "I have always had thoughts that I am a failure or have let myself or my family down in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you noticed changes in your appetite, such as eating significantly more or less than usual?",
+          answers: [
+            "I have never noticed changes in my appetite, such as eating significantly more or less than usual, in the past two weeks.",
+            "I have rarely noticed changes in my appetite, such as eating significantly more or less than usual, in the past two weeks.",
+            "I have sometimes noticed changes in my appetite, such as eating significantly more or less than usual, in the past two weeks.",
+            "I have often noticed changes in my appetite, such as eating significantly more or less than usual, in the past two weeks.",
+            "I have always noticed changes in my appetite, such as eating significantly more or less than usual, in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you had trouble concentrating on tasks like reading, working, or watching TV?",
+          answers: [
+            "I have never had trouble concentrating on tasks like reading, working, or watching TV in the past two weeks.",
+            "I have rarely had trouble concentrating on tasks like reading, working, or watching TV in the past two weeks.",
+            "I have sometimes had trouble concentrating on tasks like reading, working, or watching TV in the past two weeks.",
+            "I have often had trouble concentrating on tasks like reading, working, or watching TV in the past two weeks.",
+            "I have always had trouble concentrating on tasks like reading, working, or watching TV in the past two weeks.",
+          ],
+        },
+        {
+          question:
+            "In the past two weeks, how often have you felt so restless that you found it hard to sit still?",
+          answers: [
+            "I have never felt so restless that I found it hard to sit still in the past two weeks.",
+            "I have rarely felt so restless that I found it hard to sit still in the past two weeks.",
+            "I have sometimes felt so restless that I found it hard to sit still in the past two weeks.",
+            "I have often felt so restless that I found it hard to sit still in the past two weeks.",
+            "I have always felt so restless that I found it hard to sit still in the past two weeks.",
+          ],
+        },
+      ];
+
+      let selectedAnswers = [];
+      let currentQuestion = 0;
+
+      document
+        .getElementById("start-quiz-btn")
+        .addEventListener("click", function () {
+          document.querySelector(".hero").style.display = "none";
+          document.getElementById("quiz-container").style.display = "block";
+          getQuestion(currentQuestion);
+        });
+
+      function getQuestion(index) {
+        const questionText = document.getElementById("question");
+        const answersList = document.getElementById("answers");
+
+        questionText.textContent = questions[index].question;
+        answersList.innerHTML = "";
+
+        questions[index].answers.forEach((answer, i) => {
+          const li = document.createElement("li");
+          li.textContent = answer;
+          li.classList.toggle("selected", selectedAnswers[index] === answer);
+          li.addEventListener("click", () => selectAnswer(answer, li));
+          answersList.appendChild(li);
+        });
+
+        document.getElementById("next").disabled =
+          selectedAnswers[index] === undefined;
+      }
+
+      function selectAnswer(answer, liElement) {
+        selectedAnswers[currentQuestion] = answer;
+
+        const allOptions = document.querySelectorAll("#answers li");
+        allOptions.forEach((li) => li.classList.remove("selected"));
+        liElement.classList.add("selected");
+
+        document.getElementById("next").disabled = false;
+      }
+
+      function navigate() {
+        if (currentQuestion < questions.length - 1) {
+          currentQuestion++;
+          getQuestion(currentQuestion);
+        } else {
+          alert(
+            "Quiz completed! Selected answers: " +
+              JSON.stringify(selectedAnswers)
+          );
+          let promp = selectedAnswers.join(" ");
+          // alert(promp);
+        }
+      }
+
+      const ageInput = document.getElementById("age");
+      const genderInputs = document.querySelectorAll('input[name="gender"]');
+      const countrySelect = document.querySelector(
+        ".hero-country-dropdown select"
+      );
+      const startQuizButton = document.getElementById("start-quiz-btn");
+
+      let age;
+      let gender;
+      let country;
+
+      startQuizButton.disabled = true;
+
+      ageInput.addEventListener("input", validateForm);
+      genderInputs.forEach((input) =>
+        input.addEventListener("change", validateForm)
+      );
+      countrySelect.addEventListener("change", validateForm);
+
+
+      function validateForm() {
+        age = ageInput.value.trim();
+        gender = Array.from(genderInputs).find((input) => input.checked)?.value;
+        country = countrySelect.value;
+
+
+        if (age && gender && country) {
+          startQuizButton.disabled = false;
+        } else {
+          startQuizButton.disabled = true;
+        }
+      }
+
+      startQuizButton.addEventListener("click", function (event) {
+        if (!age || !gender || !country) {
+          alert("As you have not entered your details we have assumed you prefer not to say your gender, we set your country as India and your age as 30 which is the average age of Indians (If you have filled neither of them)");
+          event.preventDefault();
+          event.stopPropagation();
+          return false;
+        }
+
+      });
+    </script>
+  </body>
+</html>
