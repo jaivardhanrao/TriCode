@@ -207,7 +207,7 @@ const questions = [
 
 
 
-  const API_KEY="AIzaSyDcQ_eNKmhbXgoD2rKIPgBty5JicnrUMvE";
+  const API_KEY="apikey";
   const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + API_KEY;
 
 
