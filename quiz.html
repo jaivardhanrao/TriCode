@@ -626,11 +626,12 @@
           currentQuestion++;
           getQuestion(currentQuestion);
         } else {
-          alert(
-            "Quiz completed! Selected answers: " +
-              JSON.stringify(selectedAnswers)
-          );
+          // alert(
+          //   "Quiz completed! Selected answers: " +
+          //     JSON.stringify(selectedAnswers)
+          // );
           let promp = selectedAnswers.join(" ");
+          alert(promp);
 
         }
       }
