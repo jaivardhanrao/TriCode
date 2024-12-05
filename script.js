@@ -159,7 +159,7 @@ const questions = [
     } else {
       selectedAnswers.unshift(preBuilt);
       promp2 = selectedAnswers.join(" ");
-      alert(promp2); // ye hai
+      // alert(promp2); // ye hai
     }
   }
   
