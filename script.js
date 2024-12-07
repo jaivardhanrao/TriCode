@@ -110,7 +110,7 @@ const questions = [
     },
   ];
   let preBuilt =
-    "Give me mental health response according to the responses to a quiz a person made the responses are as follows. and dont use any kind of star of any other symbol in your response just plain text no bold italic nothing also give a score of the mental health wellness according to the response out of 10 and show this score at the end of the response";
+    "Give me mental health response in bullet points and also proved some breathing type of exercises ot help the user to improve their mental health according to the responses to a quiz a person made the responses are as follows. and dont use any kind of star of any other symbol in your response just plain text no bold italic nothing also give a score of the mental health wellness according to the response out of 10 and show this score at the end of the response";
   let selectedAnswers = [];
   let currentQuestion = 0;
   let promp2;
